@@ -1,0 +1,9 @@
+@import mixin
+
+.panel
+    @include _9palace
+    @include innerBorder(2px)
+    &:nth-child(even)
+        background: $evenPalace
+    &:nth-child(odd)
+        background: $oddPalace

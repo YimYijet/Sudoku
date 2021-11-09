@@ -1,0 +1,46 @@
+@import mixin
+
+.cell
+    @include innerBorder(1px, gray)
+    &__simple
+        font-size: 2.5rem
+        display: inline-flex
+        align-items: center
+        justify-content: center
+    &__multi
+        @include _9palace
+        font-size: 1rem
+    &__static
+        background: $staticCell
+    &__default
+        background: $defaultCell
+    @for $i from 1 through 9
+        &-atom__#{$i}
+            position: relative
+            display: inline-flex
+            justify-content: center
+            align-items: center
+            background: map-get($atom, $i)
+            color: white
+
+.select-cell
+    @for $i from 1 through 9
+        .cell-atom__#{$i}
+            cursor: pointer
+            &:hover
+                z-index: 1
+                filter: drop-shadow(2px 2px 2px map-get($atom, $i))
+    .cell-atom__selected
+        &::before
+            position: absolute
+            content: ''
+            display: inline-block
+            width: 0.5rem
+            height: 0.5rem
+            border-radius: 50%
+            background: crimson
+            top: 0
+            right: 0
+.sudoku__complete
+    .cell__default
+        background: paleturquoise

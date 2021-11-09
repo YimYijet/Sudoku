@@ -1,0 +1,33 @@
+@import mixin
+
+.sudoku-wrapper
+    display: flex
+    justify-content: space-between
+    position: relative
+    .select-panel-wrapper
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        display: none
+        .select-panel
+            @include wrapper
+            box-sizing: content-box
+            border: 2px solid transparent
+            .select-cell
+                display: grid
+                grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3)
+                grid-template-rows: calc(100% / 3) calc(100% / 3) calc(100% / 3)
+                width: calc(100% / 9)
+                height: calc(100% / 9)
+    .sudoku
+        @include _9palace
+        @include wrapper
+        border: 2px solid
+        box-sizing: content-box
+    .sudoku__complete
+        &::before
+            content: ''
+            position: absolute
+            @include wrapper

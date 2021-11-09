@@ -1,0 +1,19 @@
+@mixin _9palace
+    display: grid
+    grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3)
+    grid-template-rows: calc(100% / 3) calc(100% / 3) calc(100% / 3)
+
+@mixin innerBorder($width, $color: #000)
+    &:nth-child(3n-1)
+        border-left: $width solid $color
+        border-right: $width solid $color
+    @for $i from 4 through 6
+        &:nth-child(#{$i})
+            border-top: $width solid $color
+            border-bottom: $width solid $color
+
+@mixin wrapper
+    width: 90vh
+    height: 90vh
+    min-width: 860px
+    min-height: 860px
